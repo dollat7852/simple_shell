@@ -1,14 +1,18 @@
 #include "shell.h"
-
-int main(int argc __attribute__((unused)), char ** argv)
+/**
+ * main - a function toimitate built in unix shell
+ * @argc: a
+ * @argv: b
+ * Return: int
+ */
+int main(int argc __attribute__((unused)), char **argv)
 {
-    char *line;
+	char *line;
 	char **args;
 	int cmd_type;
 
 	(void) argv;
-	
-	//signal(SIGINT, ctrl_C);
+	signal(SIGINT, ctrl_C);
 
 	while (1)
 	{
@@ -21,7 +25,7 @@ int main(int argc __attribute__((unused)), char ** argv)
 				break;
 		}
 		args = tokenize(line, DELIM);
-       	cmd_type = check_command(args[0]);
+		cmd_type = check_command(args[0]);
 		shell_execute(args, cmd_type);
 	}
 	return (1);

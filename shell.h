@@ -22,6 +22,12 @@
 
 /* declaring global environ variable */
 extern char **environ;
+/**
+ * struct internal_func - struct to handle some function
+ * call and map the command type to specific fuction call.
+ * @cmd_name: command name
+ * @func: a function with argumenet of type char **
+ */
 
 typedef struct internal_func
 {
@@ -46,6 +52,4 @@ char *_getenv(char *path);
 void env(char **command __attribute__((unused)));
 void quit(char **command);
 void ch_dir(char **command);
-
-
 #endif

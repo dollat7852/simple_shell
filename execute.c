@@ -1,6 +1,11 @@
 #include "shell.h"
 
-
+/**
+ * shell_execute - an helper function to execute system call
+ * @command: command to be executed
+ * @cmd_type: command type e.g internal, external, path, invalid
+ * Return: null
+ */
 void shell_execute(char **command, int cmd_type)
 {
 	int stat;
@@ -26,6 +31,12 @@ void shell_execute(char **command, int cmd_type)
 		execute(command, cmd_type);
 }
 
+/**
+ * check_command - a function to determine command type
+ * @command: command to be checked
+ * Return: int (see header file for more)
+ */
+
 int check_command(char *command)
 {
 	int i = 0;
@@ -47,9 +58,13 @@ int check_command(char *command)
 	}
 
 	return (INVALID_CMD);
-	
 }
 
+/**
+ * execute - make a system call to execute a command
+ * @commands: commands is a string passed by user
+ * @cmd_type: type of command (see command type above)
+ */
 void execute(char **commands, int cmd_type)
 {
 	void (*func)(char **command);

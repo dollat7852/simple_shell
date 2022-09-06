@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * _getenv - get the environment path
+ * @path: a pointer to path
+ * Return: char
+ */
+
 char *_getenv(char *path)
 {
 	char **my_environ = environ;

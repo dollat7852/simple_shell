@@ -1,19 +1,33 @@
 #include "shell.h"
-
-int is_delimeter(const char *delimeters, char c)
+/**
+ * is_delimiter - check if the char received is a delimeter
+ * see header file for list of delimiters
+ * @delimiters: see header file
+ * @c: char to be checked against delimiters
+ * Return: int
+ */
+int is_delimiter(const char *delimiters, char c)
 {
 	int i = 0;
-	if (!delimeters)
+
+	if (!delimiters)
 		return (0);
-	while (delimeters[i])
+	while (delimiters[i])
 	{
-		if (delimeters[i] == c)
+		if (delimiters[i] == c)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
+/**
+ * tokenize - A function that breaks a string into separate tokens
+ * using the specified delimiters
+ * @str: input string
+ * @delim: list of delimiters
+ * Return: char pointer to the list of tokenized words
+ */
 
 char **tokenize(char *str, const char *delim)
 {
@@ -25,12 +39,12 @@ char **tokenize(char *str, const char *delim)
 	/* calc no of words and lengths */
 	for (i = 0; str[i]; i++)
 	{
-		/* skip delimeters */
-		if (is_delimeter(delim, str[i]))
+		/* skip delimiters */
+		if (is_delimiter(delim, str[i]))
 			continue;
 		/* get the word length */
 		j = i;
-		while (!is_delimeter(delim, str[i]) && str[i])
+		while (!is_delimiter(delim, str[i]) && str[i])
 			i++;
 		if (i > j)
 			lens[size++] = i - j;
@@ -43,12 +57,12 @@ char **tokenize(char *str, const char *delim)
 	arr = malloc((size + 1) * sizeof(char *));
 	for (i = 0; str[i]; i++)
 	{
-		if (is_delimeter(delim, str[i]))
+		if (is_delimiter(delim, str[i]))
 			continue;
 		/* copy the word */
 		arr[k] = malloc((lens[k] + 1) * sizeof(char));
 		j = 0;
-		while (!is_delimeter(delim, str[i]) && str[i])
+		while (!is_delimiter(delim, str[i]) && str[i])
 			arr[k][j++] = str[i++];
 		arr[k++][j] = '\0';
 		if (!str[i])
