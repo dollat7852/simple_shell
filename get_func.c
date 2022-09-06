@@ -1,4 +1,9 @@
 #include "shell.h"
+/**
+ * get_func - a function that maps command
+ * @command: a char pointer to command
+ * Return: a mapped function
+ */
 void (*get_func(char *command))(char **)
 {
 	int i;
@@ -6,7 +11,7 @@ void (*get_func(char *command))(char **)
 	map_func map[] = {
 		{"env", env},
 		{"cd", ch_dir},
-		{"exit", quit}	
+		{"exit", quit}
 	};
 
 	for (i = 0; i < 3; i++)
