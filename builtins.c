@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * env - a function that print out the current path
+ * Return: nothing
+ */
+
 void env(char **command __attribute__((unused)))
 {
 	int i = 0;
