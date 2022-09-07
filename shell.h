@@ -10,6 +10,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <limits.h>
 
 #define READ_BUF 1000
 #define DELIM " \a\t\r\n"
@@ -52,4 +53,5 @@ char *_getenv(char *path);
 void env(char **command __attribute__((unused)));
 void quit(char **command);
 void ch_dir(char **command);
+int _atoi(char *str);
 #endif

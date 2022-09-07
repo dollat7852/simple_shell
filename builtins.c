@@ -17,8 +17,34 @@ void env(char **command __attribute__((unused)))
 }
 
 void quit(char **command)
+{
+	int num_token = 0, arg;
+
+	while (command[num_token] != NULL)
+		num_token++;
+	if (num_token == 1)
 	{
-	(void) command;
+		/*free(command);*/
+		/*free(environ);*/
+		exit(1);
+	}
+	else if (num_token == 2)
+	{
+		arg = _atoi(command[1]);
+		if (arg < 0)
+		{
+			perror(*command);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			/*free(command);*/
+			/*free(environ);*/
+			exit(arg);
+		}
+	}
+	else
+		print("$: exit doesn't take more than one argument\n", STDERR_FILENO);
 }
 
 void ch_dir(char **command)
