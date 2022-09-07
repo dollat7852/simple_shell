@@ -2,6 +2,7 @@
 
 /**
  * env - a function that print out the current path
+ * @command: - parsed list
  * Return: nothing
  */
 
@@ -15,6 +16,11 @@ void env(char **command __attribute__((unused)))
 		print("\n", STDOUT_FILENO);
 	}
 }
+
+/**
+ * quit - terminate the execution of  a program
+ * @command: - parsed list
+ */
 
 void quit(char **command)
 {
@@ -47,6 +53,10 @@ void quit(char **command)
 		print("$: exit doesn't take more than one argument\n", STDERR_FILENO);
 }
 
+/**
+ * ch_dir - implement the cd command
+ * @command: - parsed list
+ */
 void ch_dir(char **command)
 {
 	(void) command;
