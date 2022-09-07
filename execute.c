@@ -75,7 +75,7 @@ void execute(char **commands, int cmd_type)
 			{
 				if (execve(commands[0], commands, NULL) == -1)
 				{
-					perror(_getenv("PWD"));
+					perror(getenv("PWD"));
 					exit(2);
 				}
 				break;
@@ -92,6 +92,9 @@ void execute(char **commands, int cmd_type)
 			}
 		case INVALID_CMD:
 			{
+				print(*commands, STDOUT_FILENO);
+				print(": command not found\n", STDERR_FILENO);
+				exit(1);
 				break;
 			}
 	}
